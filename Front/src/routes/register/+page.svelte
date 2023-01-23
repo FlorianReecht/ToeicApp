@@ -1,6 +1,10 @@
 <script>
-    /** @type {import('./$types').PageData} */
-    let users = [];
+  import { onMount } from "svelte";
+
+/**
+     * @type {any[]}
+     */
+let users = [];
 let name = ""
 let password = ""
 let admin = false
@@ -15,17 +19,22 @@ onMount(async () => {
    users = await res.json();
 });*/
 
-async function login () {
-  const res = await fetch('http://localhost:8080/api/public/login', {
-    method: 'GET',
-    headers: {'Content-Type' : 'application/json'}
+async function register () {
+  const res = await fetch('http://localhost:8080/api/public/user', {
+    method: 'POST',
+    headers: {'Content-Type' : 'application/json'},
+    body: JSON.stringify({
+      name,
+      password,
+      admin
+    })
   })
 
   const json = await res.json()
   result = JSON.stringify(json)
 }
 
-console.log(admin)
+console.log(result)
 
 </script>
 
@@ -34,5 +43,6 @@ console.log(admin)
 <form>
     <input name="username" type="username" placeholder="Nom d'utilisateur" bind:value={name}>
     <input name="password" type="password" placeholder="Mot de passe" bind:value={password}>
-    <button type="button" on:click={login}>Inscription</button>
+    <input name="admin" type="checkbox" id="checkAdmin" bind:checked={admin}>Admin
+    <button type="button" on:click={register}>Inscription</button>
   </form>

@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import lombok.NonNull;
+
 import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Optional;
@@ -51,6 +53,11 @@ public class ToeicUserService implements UserDetailsService {
     {
         toeicUserRepository.save(toeicUser);
     }
+
+    public Optional<ToeicUser> find(@NonNull String username){
+        return toeicUserRepository.findByName(username);
+    }
+
     @PostConstruct
     public void Test() {
         if (toeicUserRepository.findByName("admin")==null)
@@ -68,7 +75,7 @@ public class ToeicUserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
         log.info("récupération de {}",username);
-        ToeicUser user = toeicUserRepository.findByName(username);
+        ToeicUser user = toeicUserRepository.findByName(username).get();
         System.out.println(user.getName());
         log.info(user.getName(),"est admin");
         if(user!=null) //Pour être authentifié , l'utilisateur doit avoir un identifiant un mot de passe mais aussi être administrateur ( admin = true)

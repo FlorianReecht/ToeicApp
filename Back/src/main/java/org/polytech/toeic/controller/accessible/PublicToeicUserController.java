@@ -2,6 +2,9 @@ package org.polytech.toeic.controller.accessible;
 
 import org.polytech.toeic.entity.ToeicUser;
 import org.polytech.toeic.service.ToeicUserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,5 +42,14 @@ public class PublicToeicUserController {
         user.setPassword(toeicUserService.passwordEncoder.encode(user.getPassword()));
         toeicUserService.addUser(user);
     }
+
+    @GetMapping("/login")
+    public ResponseEntity<ToeicUser> login(Authentication authentication) {
+        return Optional.ofNullable(authentication)
+            .flatMap(auth -> toeicUserService.find(auth.getName()))
+            .map(ResponseEntity::ok)
+            .orElseGet(() -> ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+    }
+
 
 }

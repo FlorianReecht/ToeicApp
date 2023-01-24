@@ -20,15 +20,15 @@ onMount(async () => {
 });*/
 
 async function register () {
-  const res = await fetch('http://localhost:8080/api/public/user', {
-    method: 'POST',
-    headers: {'Content-Type' : 'application/json'},
-    body: JSON.stringify({
-      name,
-      password,
-      admin
+    const res = await fetch('http://localhost:8080/api/public/user', {
+      method: 'POST',
+      headers: {'Content-Type' : 'application/json'},
+      body: JSON.stringify({
+        name,
+        password,
+        admin
+      })
     })
-  })
 
   const json = await res.json()
   result = JSON.stringify(json)
@@ -48,4 +48,3 @@ console.log(result)
   </form>
 
 
-  <p>Déjà inscrit ? Connectez-vous <a href="/login">ici</a></p>

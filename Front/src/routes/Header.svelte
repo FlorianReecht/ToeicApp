@@ -8,9 +8,10 @@
 // List of navigation items
 const navItems = [
   { label: "Apprendre", href: "." },
-  { label: "Inscription", href: "." },
+  { label: "Inscription TOEIC", href: "/" },
   { label: "Forum", href: "." },
-  { label: "Compte", href: "." }
+  { label: "Compte", href: "/profil" },
+  { label: "Connexion", href: "/login"}
 ];
 
 // Mobile menu click event handler

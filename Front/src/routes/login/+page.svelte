@@ -1,4 +1,5 @@
 <script>
+  import { goto } from '$app/navigation';
   import {Buffer} from 'buffer';
   import { writable } from "svelte/store";
     /** @type {import('./$types').PageData} */
@@ -10,6 +11,8 @@ const store = writable();
 
 async function login () {
   //On utilise un token Basic auth pour se connecter 
+  if (localStorage.getItem('store') == null)
+  {
   var hash = name + ":" + password;
   var token = Buffer.from(hash).toString('base64');
   var auto = "Basic " + token;
@@ -24,8 +27,12 @@ async function login () {
   .then((response) => response.json())
   .then((data) => {
   console.log(data),
-  store.subscribe(datas => localStorage.setItem('store', JSON.stringify(data)))}
-  );
+  store.subscribe(datas => localStorage.setItem('store', JSON.stringify(data)))});
+  goto("/profil");
+  }
+  else {
+    console.log("Déjà co");
+  }
 }
 
 
@@ -38,3 +45,5 @@ async function login () {
     <input name="password" type="password" placeholder="Mot de passe" bind:value={password}>
     <button type="button" on:click={login}>Connexion</button>
   </form>
+
+<p>Pas de compte ? Inscrivez-vous <a href="/register">ici</a></p>

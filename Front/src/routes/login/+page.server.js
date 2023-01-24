@@ -1,6 +1,4 @@
-/** @type {import('./$types').Actions} */
-export const actions = {
-    default: async (event) => {
-      
-    }
-  };
+/** @type {import('./$types').PageServerLoad} */
+export async function load() {
+    return {};
+};

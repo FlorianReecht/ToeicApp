@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .cors().and()
                 .csrf().disable()
 
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
         return http.build();
     }
     @Bean

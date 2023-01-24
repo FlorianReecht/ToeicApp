@@ -1,63 +1,40 @@
 <script>
-  import { onMount } from "svelte";
-
-/**
-     * @type {any[]}
-     */
+  import {Buffer} from 'buffer';
+  import { writable } from "svelte/store";
+    /** @type {import('./$types').PageData} */
 let users = [];
 let name = ""
 let password = ""
 let admin = false
-/**
-   * @type {string | null}
-   */
-let result = null
-/* GET EXAMPLE
-onMount(async () => {
-  const res = await fetch(`http://localhost:8080/api/public/user`);
-   users = await res.json();
-});*/
+const store = writable();
 
 async function login () {
-  const res = await fetch('http://localhost:8080/api/public/user', {
-    method: 'POST',
-    headers: {'Content-Type' : 'application/json'},
-    body: JSON.stringify({
-      name,
-      password,
-      admin
-    })
+  //On utilise un token Basic auth pour se connecter 
+  var hash = name + ":" + password;
+  var token = Buffer.from(hash).toString('base64');
+  var auto = "Basic " + token;
+  console.log(auto);
+  const res = await fetch('http://localhost:8080/api/public/login', {
+    method: 'GET',
+    headers: {
+      'Content-Type' : 'application/json',
+      'Authorization' : auto
+    }
   })
-
-  const json = await res.json()
-  result = JSON.stringify(json)
+  .then((response) => response.json())
+  .then((data) => {
+  console.log(data),
+  store.subscribe(datas => localStorage.setItem('store', JSON.stringify(data)))}
+  );
 }
+
 
 </script>
 
-<h1> Page test login</h1>
+<h1> Page de connexion</h1>
 
 <form>
     <input name="username" type="username" placeholder="Nom d'utilisateur" bind:value={name}>
     <input name="password" type="password" placeholder="Mot de passe" bind:value={password}>
-    <input name="admin" type="checkbox" id="checkAdmin" bind:value={admin}>
-    <button type="button" on:click={login}>Log in</button>
+    <button type="button" on:click={login}>Connexion</button>
   </form>
-
-  <p>
-    Result :
-  </p>
-  <pre>
-    {result}
-  </pre>
-  <div>
-    <h1>Users List</h1>
-    {#each users as user}
-      <ul>
-         <li>{user.name}</li>
-     </ul>
-   {:else}
-     <!-- this block renders when users.length === 0 -->
-      <p>loading...</p>
-   {/each}
-</div>

@@ -46,3 +46,6 @@ console.log(result)
     <input name="admin" type="checkbox" id="checkAdmin" bind:checked={admin}>Admin
     <button type="button" on:click={register}>Inscription</button>
   </form>
+
+
+  <p>Déjà inscrit ? Connectez-vous <a href="/login">ici</a></p>

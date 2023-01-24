@@ -31,10 +31,10 @@ async function login () {
 
 </script>
 
-<h1> Page d'inscription</h1>
+<h1> Page de connexion</h1>
 
 <form>
     <input name="username" type="username" placeholder="Nom d'utilisateur" bind:value={name}>
     <input name="password" type="password" placeholder="Mot de passe" bind:value={password}>
-    <button type="button" on:click={login}>Inscription</button>
+    <button type="button" on:click={login}>Connexion</button>
   </form>

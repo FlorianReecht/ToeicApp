@@ -60,7 +60,7 @@ public class ToeicUserService implements UserDetailsService {
 
     @PostConstruct
     public void Test() {
-        if (toeicUserRepository.findByName("admin") == null)
+        if (!toeicUserRepository.findByName("admin").isPresent())
         {
             log.info("Création de l'utilisateur par defaut");
             ToeicUser user = new ToeicUser();

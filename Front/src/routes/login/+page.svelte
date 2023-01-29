@@ -4,9 +4,9 @@
   import { writable } from "svelte/store";
     /** @type {import('./$types').PageData} */
 let users = [];
-let name = ""
-let password = ""
-let admin = false
+let name = "";
+let password = "";
+let admin = false;
 const store = writable();
 
 async function login () {

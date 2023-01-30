@@ -11,7 +11,7 @@
 	];
 	let selected="";
 
-    function handleSubmit(){
+    async function handleSubmit(){
         if (selected != ''){
             console.log("submit", value, selected);
         }

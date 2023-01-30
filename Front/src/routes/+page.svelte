@@ -1,9 +1,6 @@
-<svelte:head>	
-<link href="https://cdn.jsdelivr.net/npm/daisyui@2.11.0/dist/full.css" rel="stylesheet" type="text/css" />
-</svelte:head>
 <script>
-  import { onMount } from "svelte";
-  import Calendar from "../Components/Calendar.svelte";
+  	import { onMount } from "svelte";
+  	import Calendar from "../Components/Calendar.svelte";
 	import {createEventDispatcher} from 'svelte';
 
 	var dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];

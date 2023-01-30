@@ -1,7 +1,10 @@
 package org.polytech.toeic.controller.accessible;
 
 import org.polytech.toeic.entity.ToeicUser;
+import org.polytech.toeic.repository.ToeicUserRepository;
 import org.polytech.toeic.service.ToeicUserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -16,17 +19,20 @@ import java.util.Optional;
 public class PublicToeicUserController {
 
     private final ToeicUserService toeicUserService;
+    private final ToeicUserRepository repository;
+    Logger logger = LoggerFactory.getLogger(PublicToeicUserController.class);
 
-    public PublicToeicUserController(ToeicUserService toeicUserService)
+    public PublicToeicUserController(ToeicUserService toeicUserService, ToeicUserRepository repository)
     {
         this.toeicUserService = toeicUserService;
+        this.repository = repository;
     }
 
-    @PutMapping("user")
+    @PutMapping("/update_user")
     public void updateUser(@RequestBody ToeicUser user)
     {
         user.setPassword(toeicUserService.passwordEncoder.encode(user.getPassword()));
-        toeicUserService.updateToeicUser(user);
+        repository.save(user);
     }
 
     @DeleteMapping("deleteUser/{id}")

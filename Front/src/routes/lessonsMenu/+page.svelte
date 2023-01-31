@@ -45,11 +45,6 @@
         padding-top: 20px;
         width: 100%;
         display: flex;
-        align-items: center;
-        padding: 1em;
-        position: absolute;
-        padding-left: 20em;
-        padding-right: 20em;
-        justify-content: space-between;
+        justify-content: start;
     }
 </style>

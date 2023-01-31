@@ -13,8 +13,10 @@
                 if (typeof document !== "undefined"){
                 var temp = "";
                 data.forEach(itemData => {
-                    temp += "<tr>";
-                    temp += "<td>" + itemData.content + "</td>";
+                    let slugs = "/forum/" + itemData.id;
+                    temp += "<tr>"
+                    temp += "<a href=" + '"' + slugs + '"' + "<td>" + "Nom : " + itemData.content + " crée par " + itemData.userId.name + "</td>" + "</a>";
+                    temp += "</tr>";
                 });
                 document.getElementById('forum').innerHTML = temp;
             }
@@ -25,15 +27,5 @@
 
 </script>
 
-<div class="container">
-    <table class="table">
-        <thead>
-        <tr>
-            <th> Nom : </th>
-        </tr>
-    </thead>
     <tbody id = "forum">
-
     </tbody>
-    </table>
-</div>

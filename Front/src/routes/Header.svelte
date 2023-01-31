@@ -1,7 +1,3 @@
-<svelte:head>	
-<link href="https://cdn.jsdelivr.net/npm/daisyui@2.11.0/dist/full.css" rel="stylesheet" type="text/css" />
-</svelte:head>
-
 <script>
 	import { page } from '$app/stores';
 	import { onMount } from "svelte";
@@ -11,9 +7,9 @@
 
 // List of navigation items
 const navItems = [
-  { label: "Apprendre", href: "." },
-  { label: "Inscription TOEIC", href: "/" },
-  { label: "Forum", href: "." },
+  { label: "Leçons", href: "./lessonsMenu" },
+  { label: "Inscription TOEIC", href: "/inscription" },
+  { label: "Forum", href: "/forum" },
   { label: "Compte", href: "/profil" },
   { label: "Connexion", href: "/login"}
 ];
@@ -58,48 +54,9 @@ const handleDropdownFocusLoss = ({ relatedTarget, currentTarget }) => {
 		  </div>
 		  <ul class={`navbar-list${showMobileMenu ? ' mobile' : ''}`}>
 			  {#each navItems as item}
-					{#if item.label==="Apprendre"}
-						<div class="dropdown" on:focusout={handleDropdownFocusLoss}>
-							<button class={`apprendrebtn ${showMobileMenu ? ' mobile' : ''}`} on:click={handleDropdownClick} >
-								Apprendre
-								{#if isDropdownOpen}
-						      <svg
-										xmlns="http://www.w3.org/2000/svg"
-										fill="none"
-										viewBox="0 0 24 24"
-										class="inline-block h-6 w-6 stroke-current">
-										<title>Close Dropdown</title>
-										<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										d="M6 18L18 6M6 6l12 12" />
-									</svg>
-								{:else}
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										fill="none"
-										viewBox="0 0 24 24"
-										class="inline-block h-6 w-6 stroke-current">
-										<title>Open Dropdown</title>
-										<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-						         d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/>
-                  </svg>
-								{/if}
-							</button>
-							<ul class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52" style:display={isDropdownOpen ? 'contents' : 'none'}>
-								<li><a class="apprendrebtnsub" href=".">Tests</a></li>
-								<li><a class="apprendrebtnsub" href="./lessonsMenu">Cours</a></li>
-							</ul>
-						</div>
-					{:else}
 				    <li>
 						  <a href={item.href}>{item.label}</a>
 				    </li>
-					{/if}
 			  {/each}
 		  </ul>
 		</div>

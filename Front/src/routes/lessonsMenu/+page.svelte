@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import Search from "svelte-search";
   
     let query = "";
@@ -9,9 +9,8 @@
 		{ id: 3, text: 'Vocabulaire' },
 		{ id: 4, text: 'Conjugaison' }
 	];
-	let selected="";
-
-    async function handleSubmit(){
+	let selected = "";
+    function handleSubmit(){
         if (selected != ''){
             console.log("submit", value, selected);
         }
@@ -20,19 +19,24 @@
         }
     }
 </script>
- 
+
 <form class = search>
     <Search label="Find a lesson " bind:value on:submit={() => handleSubmit()} />
-    <select value={selected}>
+    <select bind:value={selected}>
         {#each options as option}
-            <option value={option}>
+            <option value={option.text}>
                 {option.text}
             </option>
         {/each}
     </select>
     <button on:click={() => (value = "")}>Clear</button>
     <button on:click={() => handleSubmit()}>Search</button>
+
+ 
 </form>
+
+<p>{value}</p> 
+<p>{selected}</p>
 
 
 

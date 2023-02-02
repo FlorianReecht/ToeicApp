@@ -29,16 +29,9 @@
             </option>
         {/each}
     </select>
-    <button on:click={() => (value = "")}>Clear</button>
-    <button on:click={() => handleSubmit()}>Search</button>
-
- 
+    <button type="button" on:click={() => (value = "")}>Clear</button>
+    <button type="button" on:click={() => handleSubmit()}>Search</button>
 </form>
-
-<p>{value}</p> 
-<p>{selected}</p>
-
-
 
 <style>
     .search{

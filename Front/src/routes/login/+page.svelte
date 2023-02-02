@@ -3,8 +3,6 @@
   import { error, redirect } from '@sveltejs/kit';
   import {Buffer} from 'buffer';
   import { writable } from "svelte/store";
-  import { page } from '$app/stores';
-    /** @type {import('./$types').PageData} */
 let users = [];
 let name = "";
 let password = "";

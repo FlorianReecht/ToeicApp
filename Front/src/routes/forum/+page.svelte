@@ -1,31 +1,19 @@
 <script lang="ts">
+    import { page } from '$app/stores'
 
-    
-    const forum = fetch('http://localhost:8080/api/Threads', {
-        method: 'GET',
-        headers: {
-      'Content-Type' : 'application/json'
-    }
-    })
-    .then((response) => {
-        response.json().then(
-            data => {
-                if (typeof document !== "undefined"){
-                var temp = "";
-                data.forEach(itemData => {
-                    let slugs = "/forum/" + itemData.id;
-                    temp += "<tr>"
-                    temp += "<a href=" + '"' + slugs + '"' + "<td>" + "Nom : " + itemData.content + " crée par " + itemData.userId.name + "</td>" + "</a>";
-                    temp += "</tr>";
-                });
-                document.getElementById('forum').innerHTML = temp;
-            }
-            }
-        )
-    });
-
-
+    export let data;
+    console.log(data)
 </script>
-
+    
+    <h1>
+    {#each data.item as thread}
+        <tr>
+            <a href="/forum/{thread.id}"> <td> Nom : {thread.content} crée par {thread.userId.name}</td></a>
+        </tr>
+    {/each}
+    </h1>
+    
     <tbody id = "forum">
     </tbody>
+
+    <a href="forum/ajoutThread">Ajout</a>

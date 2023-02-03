@@ -1,7 +1,6 @@
 package org.polytech.toeic.service;
 
 import org.polytech.toeic.entity.Question;
-import org.polytech.toeic.entity.ToeicUser;
 import org.polytech.toeic.repository.QuestionRepository;
 import org.springframework.stereotype.Service;
 

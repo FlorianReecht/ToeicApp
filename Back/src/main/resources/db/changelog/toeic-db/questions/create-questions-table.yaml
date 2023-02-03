@@ -19,3 +19,10 @@ databaseChangeLog:
               - column:
                   name: anwser
                   type: VARCHAR(255)
+              - column:
+                  name: choices
+                  type: VARCHAR(500)
+                  # Separate each choice with '|', no spaces between choices.
+              - column:
+                  name: type
+                  type: VARCHAR(300)

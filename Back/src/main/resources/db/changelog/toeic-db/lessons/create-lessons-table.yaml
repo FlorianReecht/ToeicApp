@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: 03-02-2023-01
+      author: Jimmy
+      labels: creation
+      changes:
+        - createTable:
+            tableName: LESSON
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: link
+                  type: VARCHAR(400)
+              - column:
+                  name: type
+                  type: VARCHAR(255)
+              - column:
+                  name: title
+                  type: VARCHAR(500)

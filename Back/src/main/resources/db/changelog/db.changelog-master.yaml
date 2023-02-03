@@ -17,6 +17,9 @@ databaseChangeLog:
   - include:
       labels: creation
       file: db/changelog/toeic-db/questions/create-questions-table.yaml
+  - include:
+      labels: creation
+      file: db/changelog/toeic-db/lessons/create-lessons-table.yaml
 
 
   - include:

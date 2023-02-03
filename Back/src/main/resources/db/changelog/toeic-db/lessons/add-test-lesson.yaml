@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: 03-02-2023-04
+      author: Jimmy
+      labels: import-data
+      changes:
+        - insert:
+            tableName: LESSON
+            columns:
+              - column:
+                  name: link
+                  value: "./lessonsMenu/your"
+              - column:
+                  name: type
+                  value: "Vocabulary"
+              - column:
+                  name: title
+                  value: "Différencier your et you\'re"

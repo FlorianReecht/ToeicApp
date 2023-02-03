@@ -3,6 +3,8 @@
   import { error, redirect } from '@sveltejs/kit';
   import {Buffer} from 'buffer';
   import { writable } from "svelte/store";
+  import { loggedIn } from '$lib/stores/user';
+
 let users = [];
 let name = "";
 let password = "";
@@ -10,13 +12,14 @@ let admin = false;
 const store = writable();
 
 async function login () {
-  //On utilise un token Basic auth pour se connecter 
+  //On utilise un token Basic auth pour se connecter
+  if (typeof localStorage !== "undefined"){ 
+  loggedIn.set('true');}
   if (localStorage.getItem('store') == null)
   {
   var hash = name + ":" + password;
   var token = Buffer.from(hash).toString('base64');
   var auto = "Basic " + token;
-  console.log(auto);
   const res = await fetch('http://localhost:8080/api/public/login', {
     method: 'GET',
     headers: {
@@ -35,12 +38,11 @@ async function login () {
     };}
   )
   .then((data) => {
-  console.log(data),
   store.subscribe(datas => localStorage.setItem('store', JSON.stringify(data)))});
-  goto("/profil");
+  goto("/");
   }
   else {
-    console.log(":)")
+    console.log("Déjà connecté")
   }
 }
 

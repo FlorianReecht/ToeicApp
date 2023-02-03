@@ -24,6 +24,7 @@
 	"type": "module",
 	"dependencies": {
 		"buffer": "^6.0.3",
+		"sveltekit-route-guard": "^1.0.5",
 		"sveltestrap": "^5.10.0"
 	}
 }

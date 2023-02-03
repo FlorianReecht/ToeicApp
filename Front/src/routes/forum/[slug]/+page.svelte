@@ -1,14 +1,13 @@
 <script lang="ts">
-    import { page } from '$app/stores'
-
-    const url = $page.url.toJSON();
-    let id; //To not raise an error with item[id]
-    id = url.split("forum/")
-    export let data; //We export the fetch result here with data from the page.ts load function
-    console.log(data)
+export let data; //We export the fetch result here with data from the page.ts load function
 </script>
 
-<h1> Nom : {data.item[0].threadId.content}</h1>
+<h1>Titre du topic : {data.item[0].threadId.content}</h1>
 
-<p>Message : {data.item[0].content} </p>
+<h3>
+    {#each data.item as item}        
+        <p>message : {item.content} par {item.userId.name}</p>
+    {/each}
+</h3>
 
+<p><a href="/forum/{data.item[0].threadId.id}/ajoutMessage">Ajout message</a> </p>

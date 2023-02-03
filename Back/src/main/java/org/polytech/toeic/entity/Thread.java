@@ -12,7 +12,7 @@ public class Thread {
     @Column(name = "thread_id")
     private int id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")
     //Utilisateur créateur du thread
     private ToeicUser userId;

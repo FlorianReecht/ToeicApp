@@ -6,4 +6,4 @@ export const load = (async ({fetch, params}) => {
 
     return {item};
 
-}) satisfies PageLoad
+}) 

@@ -15,4 +15,4 @@ databaseChangeLog:
                   autoIncrement: true
               - column:
                   name: content
-                  type: VARCHAR(255)
+                  type: Text

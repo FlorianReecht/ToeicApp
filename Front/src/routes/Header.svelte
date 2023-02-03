@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { page } from '$app/stores';
 	import { onMount } from "svelte";
 
@@ -15,6 +15,19 @@ const navItems = [
   { label: "Connexion", href: "/login"}
 ];
 
+if (typeof window !== "undefined"){
+  if (localStorage.getItem('isLoggedIn') === 'true'){
+        navItems.splice(5, 1);
+        }
+      }
+      
+if (typeof window !== "undefined"){
+  if (localStorage.getItem('isLoggedIn') !== 'true'){
+        navItems.splice(1, 1);
+        navItems.splice(2, 1);
+        navItems.splice(2, 1);
+        }
+      }
 // Mobile menu click event handler
 const handleMobileIconClick = () => (showMobileMenu = !showMobileMenu);
 

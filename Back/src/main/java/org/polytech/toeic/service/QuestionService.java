@@ -4,6 +4,8 @@ import org.polytech.toeic.entity.Question;
 import org.polytech.toeic.repository.QuestionRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,7 +43,16 @@ public class QuestionService
     }
 
     public List<Question> getQuestionByType(String type){
-        return questionRepository.findAllByType(type);
+        List<Question> questions = questionRepository.findAllByType(type);
+        Collections.shuffle(questions);
+        if (questions.size()>9){
+        List<Question> finalQuestions = new ArrayList<Question>();
+            for (int i = 0; i<10 ;i++){
+                finalQuestions.add(questions.get(i));
+            }
+            return finalQuestions;
+        }
+        return questions;
     }
 
     public void deleteQuestion(Question question) {

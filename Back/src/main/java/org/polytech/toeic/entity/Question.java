@@ -14,6 +14,7 @@ public class Question {
     private String question;
     private String answer;
     private String choices;
+    private String type;
 
     @ManyToOne
     @JoinColumn(name = "set_id")
@@ -57,5 +58,13 @@ public class Question {
 
     public void setChoices(String choices) {
         this.choices = choices;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

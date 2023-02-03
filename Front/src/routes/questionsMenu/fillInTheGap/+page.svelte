@@ -12,7 +12,7 @@
     }
 
     async function getQuestion (){
-        const response = await fetch('http://localhost:8080/api/AddThread', {
+        const response = await fetch('http://localhost:8080/api/question/type/FillInTheGap', {
         method: 'GET',
         headers: {
         'Content-Type' : 'application/json',

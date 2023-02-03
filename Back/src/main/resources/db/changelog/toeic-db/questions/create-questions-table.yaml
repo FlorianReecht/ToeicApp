@@ -17,7 +17,7 @@ databaseChangeLog:
                   name: question
                   type: VARCHAR(255)
               - column:
-                  name: anwser
+                  name: answer
                   type: VARCHAR(255)
               - column:
                   name: choices

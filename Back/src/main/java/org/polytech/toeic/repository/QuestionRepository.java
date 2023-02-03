@@ -11,5 +11,6 @@ public interface QuestionRepository extends CrudRepository<Question,Integer> {
     Optional<Question> findById(int id);
 
     List<Question> findAllBySet(int setId);
+    List<Question> findAllByType(String type);
 
 }

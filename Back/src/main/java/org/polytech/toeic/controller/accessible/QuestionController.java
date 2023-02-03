@@ -19,7 +19,7 @@ public class QuestionController {
     }
 
     @GetMapping("/questions")
-    public List<Question> getAllQurstions()
+    public List<Question> getAllQuestions()
     {
         return questionService.findAll();
     }
@@ -32,6 +32,12 @@ public class QuestionController {
     public Optional<Question> getQuestionById(@PathVariable int id)
     {
         return questionService.getQuestionById(id);
+    }
+
+    @GetMapping("/question/type/{type}")
+    public List<Question> getQuestionByType(@PathVariable String type)
+    {
+        return questionService.getQuestionByType(type);
     }
 
 

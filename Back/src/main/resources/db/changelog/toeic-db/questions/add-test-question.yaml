@@ -11,7 +11,7 @@ databaseChangeLog:
                   name: question
                   value: "Maybe ... too hard on him."
               - column:
-                  name: anwser
+                  name: answer
                   value: "you\'re"
               - column:
                   name: choices
@@ -26,7 +26,7 @@ databaseChangeLog:
                   name: question
                   value: "You\'ve arrived right ... time!"
               - column:
-                  name: anwser
+                  name: answer
                   value: "on"
               - column:
                   name: choices
@@ -41,7 +41,7 @@ databaseChangeLog:
                   name: question
                   value: "Why don\'t you try this ...?"
               - column:
-                  name: anwser
+                  name: answer
                   value: "instead"
               - column:
                   name: choices

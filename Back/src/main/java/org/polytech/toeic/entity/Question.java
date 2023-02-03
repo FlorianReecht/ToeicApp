@@ -12,7 +12,8 @@ public class Question {
     private int id;
 
     private String question;
-    private String anwser;
+    private String answer;
+    private String choices;
 
     @ManyToOne
     @JoinColumn(name = "set_id")
@@ -42,11 +43,19 @@ public class Question {
         this.question = question;
     }
 
-    public String getAwnser() {
-        return anwser;
+    public String getAnswer() {
+        return answer;
     }
 
-    public void setAwnser(String awnser) {
-        this.anwser = awnser;
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public String getChoices() {
+        return choices;
+    }
+
+    public void setChoices(String choices) {
+        this.choices = choices;
     }
 }

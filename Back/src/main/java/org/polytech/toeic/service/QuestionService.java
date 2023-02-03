@@ -40,6 +40,10 @@ public class QuestionService
         return questionRepository.findAll();
     }
 
+    public List<Question> getQuestionByType(String type){
+        return questionRepository.findAllByType(type);
+    }
+
     public void deleteQuestion(Question question) {
         questionRepository.delete(question);
     }

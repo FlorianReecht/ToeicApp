@@ -1,7 +1,5 @@
 <script lang="ts">
-    let questions = [
-        { id: 1, question: 'Maybe ... too strict with him.', answer: 'you\'re', choices: ['your','you\'re','youre','yours']},
-	];
+    let questions = [];
     let result = "";
 
     function handleChoice(choice, id){
@@ -11,6 +9,22 @@
         else{
             result = "Faillure";
         }
+    }
+
+    async function getQuestion (){
+        const response = await fetch('http://localhost:8080/api/AddThread', {
+        method: 'GET',
+        headers: {
+        'Content-Type' : 'application/json',
+        }
+        }).then(response => response.json())
+        .then(data => {
+            let i = 0;
+            data.forEach(question => {
+                questions[i]=question;
+                i++;
+            });
+        })
     }
 </script>
 

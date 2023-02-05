@@ -1,8 +1,11 @@
 <script lang="ts">
     import Search from "svelte-search";
+  import { writable } from "svelte/store";
 
     export let data; //We export the fetch result here with data from the page.ts load function
     let value;
+    let title = [];
+    const store = writable();
     let options = [
         { id: 1, text: '' },
 		{ id: 2, text: 'Grammare' },
@@ -11,33 +14,91 @@
 	];
 	let selected = "";
     async function handleSubmit(){
-        console.log(value);
         console.log(data.item);
         if (selected != '' && value !=""){
-            const res = await fetch(`http://localhost:8080/api/lessons/typetitle/${selected}/${value}`);
-            data = await res.json();
-            console.log(data.item);
+            const res = await fetch(`http://localhost:8080/api/lessons/typetitle/${selected}/${value}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then((response) => {return response.json()})
+            .then((data) =>  {
+                var temp = "";
+                data.forEach(itemData => {
+                    temp += "<tr>";
+                    temp += "<a href=" + '"' + itemData.link + '"' + '>' + "<td>" + itemData.title + "</td>" +"</a>";
+                    temp += "</tr>";
+            })
+            document.getElementById('test').innerHTML = temp;    
+            });
             console.log("1");
         }
         else if(value != ""){
-            const res = await fetch(`http://localhost:8080/api/lessons/title/${value}`);
-            data = await res.json();
-            console.log(data.item);
+            const res = await fetch(`http://localhost:8080/api/lessons/title/${value}`, {
+            method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then((response) => {return response.json()})
+            .then((data) =>  {
+                var temp = "";
+                data.forEach(itemData => {
+                    temp += "<tr>";
+                    temp += "<a href=" + '"' + itemData.link + '"' + '>' + "<td>" + itemData.title + "</td>" +"</a>";
+                    temp += "</tr>";
+            })
+            document.getElementById('test').innerHTML = temp;    
+            });
             console.log("2");
         }
         else if(selected != ''){
-            const res = await fetch(`http://localhost:8080/api/lessons/type/${selected}`);
-            data = await res.json();
-            console.log(data.item);
+            const res = await fetch(`http://localhost:8080/api/lessons/type/${selected}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then((response) => {return response.json()})
+            .then((data) =>  {
+                var temp = "";
+                data.forEach(itemData => {
+                    temp += "<tr>";
+                    temp += "<a href=" + '"' + itemData.link + '"' + "<td>" + itemData.title + "</td>" +"</a>";
+                    temp += "</tr>";
+            })
+            document.getElementById('test').innerHTML = temp;    
+            });
             console.log("3");
         }
         else{
-            const res = await fetch(`http://localhost:8080/api/lessons`);
-            data = await res.json();
-            console.log(data.item);
+            const res = await fetch(`http://localhost:8080/api/lessons`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then((response) => {return response.json()})
+            .then((data) =>  {
+                console.log(data);
+                var temp = "";
+                data.forEach(itemData => {
+                    temp += "<tr>";
+                    temp += "<a href=" + '"' + itemData.link + '"' + "<td>" + itemData.title + "</td>" +"</a>";
+                    temp += "</tr>";
+                    temp += "</br>";
+            });
+            document.getElementById('test').innerHTML = temp;    
+            });
+            
             console.log("4");
         }
+
+            console.log("ici title", title);
     }
+
+
 </script>
 
 <form class = search>
@@ -54,11 +115,7 @@
 </form>
 <p>{value}</p>
 
-<form class = result>
-    {#each data.item as result}
-    <a href={result.link}>{result.title}</a><br/>   
-    {/each}
-</form>
+<div id="test"></div>
 
 <style>
     .search{

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("api")
 public class LessonController {
 
@@ -37,7 +38,7 @@ public class LessonController {
     }
 
     @GetMapping("/lessons/typetitle/{type}/{title}")
-    public List<Lesson> getByTypeAndTitile(@PathVariable String type,@PathVariable String title)
+    public List<Lesson> getByTypeAndTitle(@PathVariable String type,@PathVariable String title)
     {
         return lessonService.findByTypeAndTitle(type,title);
     }

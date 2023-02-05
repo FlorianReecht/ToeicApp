@@ -5,12 +5,14 @@
 let txt;
 let id;
 let password;
+let name;
 export let data;
 
 if (typeof localStorage !== "undefined"){
     let user = JSON.parse(localStorage.getItem("store"));
     id = user.id;
     password = user.password;
+    name = user.name
   }
 
 async function postMessage(){
@@ -21,6 +23,7 @@ async function postMessage(){
         },
         userId: {
           id: id,
+          name: name,
           password: password
         }
       }

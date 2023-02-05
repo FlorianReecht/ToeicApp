@@ -6,11 +6,13 @@ let name;
 let id;
 let password;
 let txt;
+let username;
 
 if (typeof localStorage !== "undefined"){
     let user = JSON.parse(localStorage.getItem("store"));
     id = user.id;
     password = user.password;
+    username = user.name;
   }
 
 async function postThread(){
@@ -39,6 +41,7 @@ async function postThread(){
         },
         userId: {
           id: id,
+          name: username,
           password: password
         }
       }

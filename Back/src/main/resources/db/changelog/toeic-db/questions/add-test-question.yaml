@@ -1,51 +1,51 @@
-databaseChangeLog:
-  - changeSet:
-      id: 03-02-2023-03
-      author: Jimmy
-      labels: import-data
-      changes:
-        - insert:
-            tableName: QUESTION
-            columns:
-              - column:
-                  name: question
-                  value: "Maybe ... too hard on him."
-              - column:
-                  name: answer
-                  value: "you\'re"
-              - column:
-                  name: choices
-                  value: "youre|your|you\'re|yours"
-              - column:
-                  name: type
-                  value: "FillInTheGap"
-        - insert:
-            tableName: QUESTION
-            columns:
-              - column:
-                  name: question
-                  value: "You\'ve arrived right ... time!"
-              - column:
-                  name: answer
-                  value: "on"
-              - column:
-                  name: choices
-                  value: "in|at|by|on"
-              - column:
-                  name: type
-                  value: "FillInTheGap"
-        - insert:
-            tableName: QUESTION
-            columns:
-              - column:
-                  name: question
-                  value: "Why don\'t you try this ...?"
-              - column:
-                  name: answer
-                  value: "instead"
-              - column:
-                  name: choices
-                  value: "instead|moreover|against|since"
-              - column:
-                  name: type
-                  value: "FillInTheGap"
+# databaseChangeLog:
+#   - changeSet:
+#       id: 03-02-2023-03
+#       author: Jimmy
+#       labels: import-data
+#       changes:
+#         - insert:
+#             tableName: QUESTION
+#             columns:
+#               - column:
+#                   name: question
+#                   value: 'Maybe ... too hard on him.'
+#               - column:
+#                   name: answer
+#                   value: 'you\'re'
+#               - column:
+#                   name: choices
+#                   value: 'youre|your|you\'re|yours'
+#               - column:
+#                   name: type
+#                   value: 'FillInTheGap'
+#         - insert:
+#             tableName: QUESTION
+#             columns:
+#               - column:
+#                   name: question
+#                   value: 'You\'ve arrived right ... time!'
+#               - column:
+#                   name: answer
+#                   value: 'on'
+#               - column:
+#                   name: choices
+#                   value: 'in|at|by|on'
+#               - column:
+#                   name: type
+#                   value: 'FillInTheGap'
+#         - insert:
+#             tableName: QUESTION
+#             columns:
+#               - column:
+#                   name: question
+#                   value: 'Why don\'t you try this ...?'
+#               - column:
+#                   name: answer
+#                   value: 'instead'
+#               - column:
+#                   name: choices
+#                   value: 'instead|moreover|against|since'
+#               - column:
+#                   name: type
+#                   value: 'FillInTheGap'

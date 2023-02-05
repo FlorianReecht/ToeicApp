@@ -1,6 +1,14 @@
 <script lang="ts">
+    export let data; //We export the fetch result here with data from the page.ts load function
+
     let questions = [];
     let result = "";
+    let i = 0;
+    data.item.forEach(question => {
+        questions[i]=question;
+        questions[i].choices=question.choices.split("|");
+        i++;
+    });
 
     function handleChoice(choice, id){
         if (questions[id].answer === choice){
@@ -9,22 +17,6 @@
         else{
             result = "Faillure";
         }
-    }
-
-    async function getQuestion (){
-        const response = await fetch('http://localhost:8080/api/question/type/FillInTheGap', {
-        method: 'GET',
-        headers: {
-        'Content-Type' : 'application/json',
-        }
-        }).then(response => response.json())
-        .then(data => {
-            let i = 0;
-            data.forEach(question => {
-                questions[i]=question;
-                i++;
-            });
-        })
     }
 </script>
 

@@ -7,8 +7,8 @@
 
 // List of navigation items
 const navItems = [
-  { label: "Leçons", href: "./lessonsMenu" },
-  { label: "Questions", href: "./questionsMenu" },
+  { label: "Leçons", href: "/lessonsMenu" },
+  { label: "Questions", href: "/questionsMenu" },
   { label: "Inscription TOEIC", href: "/inscription" },
   { label: "Forum", href: "/forum" },
   { label: "Compte", href: "/profil" },

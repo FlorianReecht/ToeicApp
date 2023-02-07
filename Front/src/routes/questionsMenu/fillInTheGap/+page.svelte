@@ -1,5 +1,7 @@
 <script lang="ts">
     export let data; //We export the fetch result here with data from the page.ts load function
+    import { goto } from '$app/navigation';
+    import { storable } from './+page'
 
     let warning = "";
     let questions = [];
@@ -24,12 +26,15 @@
     function validate(){
         if (result.length == questions.length){
             warning = "";
-
+            store.set(result);
+            goto("questionMenu/fillInTheGap/result");
         }
         else{
             warning = "Veuillez répondre à toutes les questions.";
         }
     }
+
+    const store = storable(result);
 </script>
 
 {#each questions as question, index}

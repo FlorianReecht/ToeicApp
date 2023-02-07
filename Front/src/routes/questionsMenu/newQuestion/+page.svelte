@@ -23,8 +23,8 @@
                 answer: answer,
                 choices: `${choice1}|${choice2}|${choice3}|${choice4}`,
                 type: type,
-                set_id: {
-                    set_id: 1
+                set: {
+                    id: 1
                 }
             }
             console.log(JSON.stringify(data));

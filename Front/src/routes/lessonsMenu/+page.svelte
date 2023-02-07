@@ -29,6 +29,7 @@
                     temp += "<tr>";
                     temp += "<a href=" + '"' + itemData.link + '"' + '>' + "<td>" + itemData.title + "</td>" +"</a>";
                     temp += "</tr>";
+                    temp += "</br>";
             })
             document.getElementById('test').innerHTML = temp;    
             });
@@ -48,6 +49,7 @@
                     temp += "<tr>";
                     temp += "<a href=" + '"' + itemData.link + '"' + '>' + "<td>" + itemData.title + "</td>" +"</a>";
                     temp += "</tr>";
+                    temp += "</br>";
             })
             document.getElementById('test').innerHTML = temp;    
             });
@@ -67,6 +69,7 @@
                     temp += "<tr>";
                     temp += "<a href=" + '"' + itemData.link + '"' + "<td>" + itemData.title + "</td>" +"</a>";
                     temp += "</tr>";
+                    temp += "</br>";
             })
             document.getElementById('test').innerHTML = temp;    
             });
@@ -85,7 +88,7 @@
                 var temp = "";
                 data.forEach(itemData => {
                     temp += "<tr>";
-                    temp += "<a href=" + '"' + itemData.link + '"' + "<td>" + itemData.title + "</td>" +"</a>";
+                    temp += "<a href=" + '"' + itemData.link + '"' + "<td>" + itemData.title + "</td>" +"</a>"
                     temp += "</tr>";
                     temp += "</br>";
             });

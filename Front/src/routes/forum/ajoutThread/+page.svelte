@@ -20,6 +20,7 @@ async function postThread(){
     content: name,
     userId: {
         id: id,
+        name: username,
         password: password
     }
     
@@ -62,7 +63,7 @@ async function postThread(){
 
 <FormGroup>
 <Input name="thread" placeholder="Nom du thread" bind:value={name}/>
-<Label>Premier messaage du topic : </Label>
+<Label>Premier message du topic : </Label>
 <Input type="textarea" placeholder="Premier message" bind:value={txt}/> 
 <Button type="button" on:click={postThread}>Création de thread</Button>
 </FormGroup>

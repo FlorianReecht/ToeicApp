@@ -3,6 +3,12 @@ package org.polytech.toeic.controller.accessible;
 
 import org.polytech.toeic.entity.Thread;
 import org.polytech.toeic.service.ThreadService;
+import org.polytech.toeic.service.ToeicUserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,11 +18,14 @@ import java.util.List;
 @RequestMapping("api")
 public class ThreadController {
 
+    private static Logger log = LoggerFactory.getLogger(ThreadController.class);
     private  final ThreadService threadService;
+    private final ToeicUserService toeicUserService;
 
-    public ThreadController(ThreadService threadService)
+    public ThreadController(ThreadService threadService, ToeicUserService toeicUserService)
     {
         this.threadService=threadService;
+        this.toeicUserService=toeicUserService;
     }
 
 
@@ -42,8 +51,12 @@ public class ThreadController {
     @PostMapping("/AddThread")
     public Thread addThread(@RequestBody Thread t)
     {
-        threadService.AddThread(t);
-        return t;
+        UserDetails user = toeicUserService.loadUserByUsername(t.getUserId().getName());
+        if (user.getPassword().equals(t.getUserId().getPassword())) {
+          threadService.AddThread(t);
+            return t;
+       }
+       else return null;
     }
 
     @PutMapping("/Thread")

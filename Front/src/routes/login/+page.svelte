@@ -14,7 +14,7 @@ const store = writable();
 async function login () {
   //On utilise un token Basic auth pour se connecter
   if (typeof localStorage !== "undefined"){ 
-  loggedIn.set('true');}
+  }
   if (localStorage.getItem('store') == null)
   {
   var hash = name + ":" + password;
@@ -39,6 +39,7 @@ async function login () {
   )
   .then((data) => {
   store.subscribe(datas => localStorage.setItem('store', JSON.stringify(data)))});
+  loggedIn.set(true);
   goto("/");
   }
   else {
@@ -60,3 +61,4 @@ async function login () {
 <p id="error"></p>
 
 <p>Pas de compte ? Inscrivez-vous <a href="/register">ici</a></p>
+

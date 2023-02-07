@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import { onMount } from "svelte";
 
@@ -7,27 +8,28 @@
 
 // List of navigation items
 const navItems = [
-  { label: "Leçons", href: "/lessonsMenu" },
-  { label: "Questions", href: "/questionsMenu" },
+  { label: "Leçons", href: "./lessonsMenu" },
+  { label: "Questions", href: "./questionsMenu" },
   { label: "Inscription TOEIC", href: "/inscription" },
   { label: "Forum", href: "/forum" },
   { label: "Compte", href: "/profil" },
   { label: "Connexion", href: "/login"}
 ];
 
-// if (typeof window !== "undefined"){
-//   if (localStorage.getItem('isLoggedIn') === 'true'){
-//         navItems.splice(5, 1);
-//         }
-//       }
+ $: if (browser && typeof window !== "undefined"){
+   if (localStorage.getItem('isLoggedIn') === 'true' ){
+      navItems.splice(5, 1);
+        }
+      }
       
-// if (typeof window !== "undefined"){
-//   if (localStorage.getItem('isLoggedIn') !== 'true'){
-//         navItems.splice(1, 1);
-//         navItems.splice(2, 1);
-//         navItems.splice(2, 1);
-//         }
-//       }
+ if (browser && typeof window !== "undefined"){
+   if (localStorage.getItem('store') === null){
+         navItems.splice(1, 1);
+         navItems.splice(2, 1);
+         navItems.splice(2, 1);
+         }
+       }
+
 // Mobile menu click event handler
 const handleMobileIconClick = () => (showMobileMenu = !showMobileMenu);
 

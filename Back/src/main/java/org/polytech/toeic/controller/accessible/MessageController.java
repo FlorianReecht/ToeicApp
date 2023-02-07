@@ -3,6 +3,8 @@ package org.polytech.toeic.controller.accessible;
 
 import org.polytech.toeic.entity.Message;
 import org.polytech.toeic.service.MessageService;
+import org.polytech.toeic.service.ToeicUserService;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,9 +15,12 @@ import java.util.List;
 public class MessageController {
 
     private final MessageService messageService;
-    public MessageController(MessageService messageService)
+    private final ToeicUserService toeicUserService;
+
+    public MessageController(MessageService messageService, ToeicUserService toeicUserService)
     {
         this.messageService = messageService;
+        this.toeicUserService = toeicUserService;
     }
 
     @GetMapping("/messages")
@@ -39,7 +44,11 @@ public class MessageController {
     @PostMapping("/addMessage")
     public Message addMessage(@RequestBody Message message)
     {
-        return messageService.addMessage(message);
+        UserDetails user = toeicUserService.loadUserByUsername(message.getUserId().getName());
+        if (user.getPassword().equals(message.getUserId().getPassword())) {
+            return messageService.addMessage(message);  
+       }
+       else return null;
     }
     @PutMapping("/message")
     public void updateMessage(@RequestBody Message message)

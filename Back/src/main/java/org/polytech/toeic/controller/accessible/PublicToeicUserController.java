@@ -56,5 +56,15 @@ public class PublicToeicUserController {
             .orElseGet(() -> ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
     }
 
+    @PostMapping("/realUser")
+    public ResponseEntity<ToeicUser> verifEntity(@RequestBody ToeicUser user){
+        Optional<ToeicUser> dbUser = toeicUserService.getUserById(user.getId());
+        logger.info(user.getClass().getName());
+        if (!dbUser.get().getPassword().equals(user.getPassword()) || !dbUser.get().getName().equals(user.getName()) || user.isAdmin() != dbUser.get().isAdmin()){
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
+        else return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+    }
+
 
 }

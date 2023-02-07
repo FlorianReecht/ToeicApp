@@ -2,6 +2,7 @@
     let options = [
         { id: 1, label: 'Texte à trou', href: './questionsMenu/fillInTheGap'},
 	];
+
 </script>
 
 <form>

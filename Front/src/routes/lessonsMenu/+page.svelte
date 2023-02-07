@@ -2,7 +2,7 @@
     import Search from "svelte-search";
   import { writable } from "svelte/store";
 
-    export let data; //We export the fetch result here with data from the page.ts load function
+    //export let data; We export the fetch result here with data from the page.ts load function
     let value;
     let title = [];
     const store = writable();
@@ -14,7 +14,6 @@
 	];
 	let selected = "";
     async function handleSubmit(){
-        console.log(data.item);
         if (selected != '' && value !=""){
             const res = await fetch(`http://localhost:8080/api/lessons/typetitle/${selected}/${value}`, {
                 method: 'GET',
@@ -29,10 +28,10 @@
                     temp += "<tr>";
                     temp += "<a href=" + '"' + itemData.link + '"' + '>' + "<td>" + itemData.title + "</td>" +"</a>";
                     temp += "</tr>";
+                    temp += "<br/>";
             })
             document.getElementById('test').innerHTML = temp;    
             });
-            console.log("1");
         }
         else if(value != ""){
             const res = await fetch(`http://localhost:8080/api/lessons/title/${value}`, {
@@ -48,10 +47,10 @@
                     temp += "<tr>";
                     temp += "<a href=" + '"' + itemData.link + '"' + '>' + "<td>" + itemData.title + "</td>" +"</a>";
                     temp += "</tr>";
+                    temp += "<br/>";
             })
             document.getElementById('test').innerHTML = temp;    
             });
-            console.log("2");
         }
         else if(selected != ''){
             const res = await fetch(`http://localhost:8080/api/lessons/type/${selected}`, {
@@ -67,10 +66,10 @@
                     temp += "<tr>";
                     temp += "<a href=" + '"' + itemData.link + '"' + "<td>" + itemData.title + "</td>" +"</a>";
                     temp += "</tr>";
+                    temp += "<br/>";
             })
             document.getElementById('test').innerHTML = temp;    
             });
-            console.log("3");
         }
         else{
             const res = await fetch(`http://localhost:8080/api/lessons`, {
@@ -87,15 +86,11 @@
                     temp += "<tr>";
                     temp += "<a href=" + '"' + itemData.link + '"' + "<td>" + itemData.title + "</td>" +"</a>";
                     temp += "</tr>";
-                    temp += "</br>";
+                    temp += "<br/>";
             });
             document.getElementById('test').innerHTML = temp;    
             });
-            
-            console.log("4");
         }
-
-            console.log("ici title", title);
     }
 
 
@@ -113,7 +108,6 @@
     <button type="button" on:click={() => (value = "")}>Clear</button>
     <button type="button" on:click={() => handleSubmit()}>Search</button>
 </form>
-<p>{value}</p>
 
 <div id="test"></div>
 

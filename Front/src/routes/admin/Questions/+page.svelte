@@ -1,4 +1,7 @@
 <script lang="ts">
+    import { Button, Table } from 'sveltestrap'
+
+
 export let data;
 
 async function deleteQuestion(id){
@@ -10,12 +13,27 @@ async function deleteQuestion(id){
         },
     }).then(response => response.json());
 }
-
 </script>
 
+<Table striped>
+    <thead>
+        <tr> 
+            <th>Question</th>
+            <th>Réponse</th>
+            <th>Choix</th>
+            <th>Type</th>
+            <th>Supprimer</th>
+        </tr>
+    </thead>
+    <tbody>
 {#each data.item as question}
-    <p>{question.question}</p>
-    <p>{question.id}</p>
-    
-    <button on:click={ () => deleteQuestion(question.id)}>Supprimer</button> 
+    <tr>
+        <th scope="row">{question.question}</th>
+        <td>{question.answer}</td>
+        <td>{question.choices}</td>
+        <td>{question.type}</td> 
+        <td><Button color="dark" on:click={ () => deleteQuestion(question.id)}>Supprimer</Button></td>
+    </tr>
 {/each}
+    </tbody>
+</Table>

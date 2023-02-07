@@ -8,12 +8,13 @@
 
 // List of navigation items
 const navItems = [
-  { label: "Leçons", href: "./lessonsMenu" },
-  { label: "Questions", href: "./questionsMenu" },
+  { label: "Leçons", href: "/lessonsMenu" },
+  { label: "Questions", href: "/questionsMenu" },
   { label: "Inscription TOEIC", href: "/inscription" },
   { label: "Forum", href: "/forum" },
   { label: "Compte", href: "/profil" },
-  { label: "Connexion", href: "/login"}
+  { label: "Connexion", href: "/login"},
+ 
 ];
 
  $: if (browser && typeof window !== "undefined"){
@@ -29,6 +30,12 @@ const navItems = [
          navItems.splice(2, 1);
          }
        }
+
+  if (browser && typeof window !== "undefined"){
+    if (JSON.parse(localStorage.getItem('store')).admin === true){
+      navItems.push( { label: "Admin", href:" /admin/Questions"})
+    }
+  }
 
 // Mobile menu click event handler
 const handleMobileIconClick = () => (showMobileMenu = !showMobileMenu);
@@ -107,17 +114,7 @@ const handleDropdownFocusLoss = ({ relatedTarget, currentTarget }) => {
     cursor: pointer;
   }
 
-  .mobile-icon:after,
-  .mobile-icon:before,
-  .middle-line {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #fff;
-    transition: all 0.4s;
-    transform-origin: center;
-  }
+
 
   .mobile-icon:before,
   .middle-line {
@@ -167,14 +164,6 @@ const handleDropdownFocusLoss = ({ relatedTarget, currentTarget }) => {
     padding: 0 40px;
   }
 
-  .navbar-list.mobile {
-    background-color: rgba(0, 0, 0, 0.8);
-    position: fixed;
-    display: block;
-    height: calc(100% - 45px);
-    bottom: 0;
-    left: 0;
-  }
 
   .navbar-list li {
     list-style-type: none;
@@ -201,32 +190,9 @@ const handleDropdownFocusLoss = ({ relatedTarget, currentTarget }) => {
     font-size: 17px;
   }
 	
-	.apprendrebtn{
-		border: none;
-		color: #f2f2f2;;
-    height: 45px;
-    align-items: center;
-    padding: 10px 10px;
-    text-decoration: none;
-    font-size: 17px;
-	}
 
-  .apprendrebtn.mobile{
-		border: none;
-		color: #f2f2f2;
-    padding: 10px 10px;
-    align-items: center;
-    text-decoration: none;
-    font-size: 17px;
-    height: 45px;
-	}
 
-  .apprendrebtnsub{
-    color: #f2f2f2 ;
-    background-color: #424245;
-    font-size: 17px;
-    text-decoration: none;
-  }
+
 
   @media only screen and (min-width: 767px) {
     .mobile-icon {

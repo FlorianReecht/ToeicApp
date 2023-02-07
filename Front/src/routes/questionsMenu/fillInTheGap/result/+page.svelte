@@ -1,8 +1,14 @@
 <script>
-    import { storable } from './+page'
 
-    let result = [];
-    const store = storable(result);
+let result;
+if(typeof window !== 'undefined'){
+    result = JSON.parse(localStorage.getItem('storable'))
+}
+
+console.log(result)
 </script>
 
-data:{result}
+{#each result as results}
+
+<p>data:{results}</p>
+{/each}

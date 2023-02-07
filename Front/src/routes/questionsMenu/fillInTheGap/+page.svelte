@@ -27,7 +27,7 @@
         if (result.length == questions.length){
             warning = "";
             store.set(result);
-            goto("questionMenu/fillInTheGap/result");
+            goto("/questionsMenu/fillInTheGap/result");
         }
         else{
             warning = "Veuillez répondre à toutes les questions.";

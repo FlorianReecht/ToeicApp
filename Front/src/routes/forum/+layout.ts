@@ -22,10 +22,7 @@ export const load = (async ({ fetch }) => {
         },
         body: JSON.stringify(data)
     }).then(response => {
-        console.log(response)
         status = response.status;
-        console.log(JSON.stringify(data));
-        console.log(status);
         if (status != 202) {
           throw error(302, "Cet utilisateur n'existe pas")
         }

@@ -1,19 +1,18 @@
 <script lang="ts">
-    import { page } from '$app/stores'
+  import { goto } from '$app/navigation';
+import { page } from '$app/stores'
 
-    export let data;
-    console.log(data)
+export let data;
+console.log(data.itemBis)
+console.log(data.item)
 </script>
     
     <h1>
-    {#each data.item as thread}
+    {#each data.item as thread, i}
         <tr>
             <a href="/forum/{thread.id}"> <td> Nom : {thread.content} crée par {thread.userId.name}</td></a>
+            <p>Dernier message : {data.itemBis[i][0].content}</p>
         </tr>
     {/each}
     </h1>
-    
-    <tbody id = "forum">
-    </tbody>
-
     <a href="forum/ajoutThread">Ajout</a>

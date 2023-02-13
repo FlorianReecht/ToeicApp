@@ -88,7 +88,7 @@ Ils sont actuellement capable d'ajouter une question à la base de donnée via u
 
 ### Vérification
 
-Comme nous stockons des données utiles dans le LocalStorage, il est possible de les modifier en utilisant les devtools des navigateurs. Pour éviter que ses données puissent être modifiées pour changer son nom ou son état administrateur par exemple, à chaque chargement de page une vérification est faite avec le serveur pour être sûr que l'utilisateur connecté existe bien et qu'aucune donnée n'a été modifiée. 
+Comme nous stockons des données utiles dans le LocalStorage, il est possible de les modifier en utilisant les devtools des navigateurs. Pour éviter que ces données puissent être modifiées pour changer son nom ou son état administrateur par exemple, à chaque chargement de page une vérification est faite avec le serveur pour être sûr que l'utilisateur connecté existe bien et qu'aucune donnée n'a été modifiée. 
 
 ## Conclusion
 

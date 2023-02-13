@@ -1,20 +1,32 @@
 GAILLARD Julian
+
 REECHT Florian
+
 BERNABE Jimmy
+
 
 # Rapport de projet: Application TOEIC
 
 
 # Sommaire
 I. [Introduction](#introduction)
+
 II. [Architecture du projet](#architecture-du-projet)
+
 III. [Mise en application](#mise-en-application)
+
 	III.1. [Connexion](#connexion)
+	
 	III.2. [Leçons](#leçon)
+	
 	III.3. [Questions](#questions)
+	
 	III.4. [Forum](#forum)
+	
 	III.5 [Administrateur](#administrateur)
+	
 	III.6 [Vérification](#vérification)
+	
 IV. [Conclusion](#conclusion)
 
 ## Introduction

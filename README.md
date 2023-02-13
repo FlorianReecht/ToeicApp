@@ -39,7 +39,7 @@ Ce projet s'inscrit dans cette démarche en proposant un outil capable de conten
 
 Pour commencer, il faut définir les différentes classes utilisées par l'application.
 
-![Diagramme UML](https://raw.githubusercontent.com/FlorianReecht/ToeicApp/main/Documentation/Diagramme%20de%20classe.drawio.png?token=GHSAT0AAAAAAB5JNIMXGV2R4ULSEES7O3UYY7KJNDA)
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/vZkjqLn/Diagramme20de20classe.png" alt="Diagramme20de20classe" border="0"></a>
 
 Le diagramme ci-dessus présente les entités utilisées par l'application. La classe user correspond aux comptes utilisateurs qui peuvent être des administrateurs ou non, les utilisateurs peuvent créer des fils de discussion constitués de plusieurs messages eux-mêmes écrient par d'autres utilisateurs.
 

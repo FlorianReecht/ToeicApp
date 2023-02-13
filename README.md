@@ -15,17 +15,17 @@ II. [Architecture du projet](#architecture-du-projet)
 
 III. [Mise en application](#mise-en-application)
 
-	III.1. [Connexion](#connexion)
+III.1. [Connexion](#connexion)
 	
-	III.2. [Leçons](#leçon)
+III.2. [Leçons](#leçon)
 	
-	III.3. [Questions](#questions)
+III.3. [Questions](#questions)
 	
-	III.4. [Forum](#forum)
+III.4. [Forum](#forum)
 	
-	III.5 [Administrateur](#administrateur)
+III.5 [Administrateur](#administrateur)
 	
-	III.6 [Vérification](#vérification)
+III.6 [Vérification](#vérification)
 	
 IV. [Conclusion](#conclusion)
 

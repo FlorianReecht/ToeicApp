@@ -37,3 +37,5 @@ async function deleteQuestion(id){
 {/each}
     </tbody>
 </Table>
+
+<a href="/admin/Questions/AjoutQuestion">Ajout question</a>

@@ -1,7 +1,8 @@
 <script lang="ts">
     export let data; //We export the fetch result here with data from the page.ts load function
     import { goto } from '$app/navigation';
-    import { storable } from './+page'
+  import { writable } from 'svelte/store';
+
 
     let warning = "";
     let questions = [];
@@ -12,6 +13,29 @@
         questions[i].choices=question.choices.split("|");
         i++;
     });
+
+    function storable(data) {
+        const store = writable(data);
+        const { subscribe, set, update } = store;
+        const isBrowser = typeof window !== 'undefined';
+
+        isBrowser &&
+            localStorage.storable &&
+            set(JSON.parse(localStorage.storable));
+
+        return {
+            subscribe,
+            set: n => {
+                localStorage.storable = JSON.stringify(n);
+            set(n);
+            },
+            update: cb => {
+                const updatedStore = cb(localStorage.getItem('store'));
+            localStorage.storable = JSON.stringify(updatedStore);
+            set(updatedStore);
+            }
+        };
+    }
 
     function handleChoice(choice, id){
         if (questions[id].answer === choice){

@@ -9,9 +9,9 @@ export const loggedIn = writable(isConnected, () => {
 
     return () => console.log('no sub');
 });
-
+/*
 loggedIn.subscribe((value: boolean) => {
     if (isConnected) {
         localStorage.setItem('isLoggedIn', String(value))
     }
-})
+})*/
